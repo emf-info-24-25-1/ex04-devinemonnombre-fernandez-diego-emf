@@ -58,18 +58,20 @@ public class Controller {
      */
     public void actionDeviner() {
         if (nombre != NOMBRE_INVALIDE) {
-            int nombrePropose = refView.lireValeurProposee();
+            int valeurPropose = refView.lireValeurProposee();
             
-            if (nombrePropose < nombre) {
-                refView.afficherStatus("Trop petit !", Color.RED);
-            } else if (nombrePropose > nombre) {
-                refView.afficherStatus("Trop grand !", Color.RED);
+            if (valeurPropose != NOMBRE_INVALIDE) {
+                if (valeurPropose < nombre) {
+                    refView.afficherStatus("Trop petit !", Color.RED);
+                } else if (valeurPropose > nombre) {
+                    refView.afficherStatus("Trop grand !", Color.RED);
+                } else {
+                    refView.afficherStatus("Trouvé !!!", Color.GREEN);
+                }
             } else {
-                refView.afficherStatus("Trouvé !!!", Color.GREEN);
+                refView.afficherStatus("Entrez un nombre !", Color.YELLOW);
             }
-        } else {
-            refView.afficherStatus("Entrez un nombre !", Color.YELLOW);
-        }
+        } 
     }
 
     /**
